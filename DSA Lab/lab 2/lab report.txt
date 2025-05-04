@@ -1,0 +1,11 @@
+name exp
+algorithm step
+source code handwritten
+output photo
+conclu
+evaluation
+
+problem;
+1. finding fir occurrence of element ujing binary carch
+2. lajt occurrence
+3. frequency ujing binary carch

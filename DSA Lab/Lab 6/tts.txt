@@ -1,0 +1,62 @@
+char getOpening(char closing)
+{
+    if (closing == ')')
+        return '(';
+    if (closing == '}')
+        return '{';
+    if (closing == ']')
+        return '[';
+    return '?';
+}
+
+char getClosing(char opening)
+{
+    if (opening == '(')
+        return ')';
+    if (opening == '{')
+        return '}';
+    if (opening == '[')
+        return ']';
+    return '?';
+}
+string fixParentheses(string expression) {
+    stack<pair<char, int>> s;
+    string fixed = "";
+
+    for (int i = 0; i < expression.length(); i++) {
+        char ch = expression[i];
+
+        if (ch == '(' || ch == '{' || ch == '[') {
+            s.push({ch, fixed.length()});
+            fixed += ch;
+        } else if (ch == ')' || ch == '}' || ch == ']') {
+            if (s.empty()) {
+                
+                char openNeeded = getOpening(ch);
+                fixed += openNeeded;
+                s.push({openNeeded, fixed.length() - 1});
+            }
+            char top = s.top().first;
+            if ((ch == ')' && top != '(') ||
+                (ch == '}' && top != '{') ||
+                (ch == ']' && top != '[')) {
+                
+                char openNeeded = getOpening(ch);
+                fixed += openNeeded;
+                s.push({openNeeded, fixed.length() - 1});
+            }
+            fixed += ch;
+            s.pop();
+        } else {
+            fixed += ch; 
+        }
+    }
+
+    while (!s.empty()) {
+        char open = s.top().first;
+        fixed += getClosing(open);
+        s.pop();
+    }
+
+    return fixed;
+}

@@ -1,0 +1,15 @@
+Single Linked List Implementation
+
+1. create
+2 traverse
+3. insert (any)
+4. delete (any)
+
+
+HW:
+Single Linked List Implementation (Create, Traverse, Insert, Delete)
+
+function use kore 
+insert
+delete
+print
